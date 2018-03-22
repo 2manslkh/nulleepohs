@@ -14,6 +14,7 @@ from pprint import pprint
 def generate_dummy_data():
     training_dic = generate_label_dicts.get_label_dicts(["Training"],"IDs")
     num_labels = len(training_dic) - 1
+    print(num_labels)
     num_childimg = 3
     
     # Number of data
@@ -40,12 +41,19 @@ def save_file(mydata, filename, ext=".csv"):
         
         print("Saved to {}".format(filename))
 
+# Loads the neural network data from a csv file
+def load_file(file):
+    print(file)
+    with open(file) as csvfile:
+        pass
+
+
 # Returns output location of folder, default is the current directory.
 def output_folder_location(location=os.getcwd()):
     return location
         
 # Set output folder
-output_folder = "aaa"
+output_folder = "output"
 
 # Creates folder if such folder does not exist
 if not os.path.exists(output_folder):
@@ -58,14 +66,17 @@ output_folder_location = output_folder_location()
 output_folder_numfiles = len([name for name in os.listdir(os.getcwd()+"/"+output_folder) if os.path.isfile(os.path.join(os.getcwd()+"/"+output_folder, name))])
 
 # Set the output file name
-csv_name = "output_"
+file_name = "output_"
 
 # Set file Name of csv
-filename = output_folder_location + "/" + output_folder + "/" + csv_name + str(output_folder_numfiles)
+file_location = output_folder_location + "/" + output_folder + "/" + file_name + str(output_folder_numfiles)
 
 # Number of file in output folder
 print("Number of Files: ", output_folder_numfiles)
 
-generate_dummy_data_save(filename)
+#generate_dummy_data_save(file_location)
+
+myfile = "C:\\Users\kengh\GitRepos\nulleepohs\NN Utilities\output\output_16.csv"
+print(load_file(myfile))
 
 
